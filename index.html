@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Aanya Kaushik — Interior Design</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f0ece5;--bg2:#e8e3db;--bg3:#ddd8cf;
+  --accent:#3e1f20;--accent2:#5a2e30;
+  --text:#2a1617;--muted:#7a6f68;--border:#ccc6bc;
+  --card:#f7f4ef;--creme:#d2cdc3;--cobble:#aa9f95;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Georgia',serif;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(240,236,229,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;flex-direction:column;line-height:1.1}
+.logo-name{font-size:0.95rem;font-weight:700;letter-spacing:0.1em;color:var(--accent);font-family:'Georgia',serif}
+.logo-sub{font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cobble);font-family:'Segoe UI',sans-serif}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;font-family:'Segoe UI',sans-serif;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+section{padding:6rem 2rem;max-width:1000px;margin:0 auto}
+.section-label{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cobble);margin-bottom:0.75rem;font-family:'Segoe UI',sans-serif}
+h2{font-size:2rem;font-weight:400;margin-bottom:2rem;line-height:1.25;color:var(--accent)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:100%;padding:0 4rem;position:relative;overflow:hidden}
+.hero-inner{max-width:1000px;margin:0 auto;width:100%;padding-top:80px}
+.hero-tag{display:inline-block;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);border:1px solid var(--cobble);padding:0.35rem 1rem;border-radius:2rem;margin-bottom:2rem;font-family:'Segoe UI',sans-serif;opacity:0;animation:fadeUp 0.7s 0.2s forwards;background:rgba(170,159,149,0.12)}
+#hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:400;line-height:1.15;letter-spacing:-0.01em;margin-bottom:1.5rem;color:var(--accent);opacity:0;animation:fadeUp 0.7s 0.4s forwards}
+#hero h1 em{font-style:italic;color:var(--cobble)}
+.hero-sub{font-size:1.1rem;color:var(--muted);max-width:500px;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.7s 0.6s forwards;font-family:'Segoe UI',sans-serif;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s 0.8s forwards}
+.btn{padding:0.75rem 1.75rem;border-radius:2px;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;cursor:pointer;text-decoration:none;transition:all 0.25s;display:inline-block;font-family:'Segoe UI',sans-serif}
+.btn-primary{background:var(--accent);color:var(--creme);border:1px solid var(--accent)}
+.btn-primary:hover{background:var(--accent2)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-deco{position:absolute;right:5%;top:50%;transform:translateY(-50%);opacity:0;animation:fadeUp 0.7s 1s forwards}
+.hero-deco-ring{width:320px;height:320px;border-radius:50%;border:1px solid var(--border)}
+.hero-deco-ring:nth-child(2){position:absolute;top:30px;left:30px;width:260px;height:260px;border-color:var(--cobble);opacity:0.4}
+.hero-deco-ring:nth-child(3){position:absolute;top:80px;left:80px;width:160px;height:160px;border-color:var(--accent);opacity:0.15}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeUp 0.7s 1.2s forwards}
+.hero-scroll span{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cobble);font-family:'Segoe UI',sans-serif}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollPulse 2s ease-in-out infinite}
+
+/* ABOUT */
+#about{border-top:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-photo{aspect-ratio:3/4;background:var(--bg3);border:1px solid var(--border);border-radius:2px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;gap:1rem;color:var(--cobble)}
+.photo-icon{width:60px;height:60px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:var(--creme)}
+.about-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,rgba(62,31,32,0.06),transparent)}
+.about-text p{color:var(--muted);margin-bottom:1.25rem;font-size:1rem;line-height:1.85;font-family:'Segoe UI',sans-serif}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.stat{padding:1.1rem;border:1px solid var(--border);border-radius:2px;background:var(--card);display:flex;flex-direction:column;justify-content:center}
+.stat-num{font-size:1.4rem;font-weight:400;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat-label{font-size:0.75rem;color:var(--cobble);margin-top:0.2rem;font-family:'Segoe UI',sans-serif;letter-spacing:0.05em}
+
+/* MANIFESTO */
+#manifesto{background:var(--accent);max-width:100%;border-top:1px solid var(--border)}
+.manifesto-inner{max-width:1000px;margin:0 auto;padding:7rem 2rem}
+.manifesto-inner .section-label{color:var(--cobble);margin-bottom:2rem}
+.manifesto-full{max-width:680px}
+.manifesto-title{font-size:1.9rem;font-weight:400;color:var(--creme);margin-bottom:0.4rem;font-style:italic}
+.manifesto-author{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--cobble);margin-bottom:2.5rem;font-family:'Segoe UI',sans-serif}
+.manifesto-full p{color:rgba(210,205,195,0.85);font-size:1rem;line-height:1.95;margin-bottom:1.4rem;font-family:'Segoe UI',sans-serif}
+.manifesto-full strong{color:var(--creme)}
+.manifesto-heading{font-size:1rem;font-weight:400;font-style:italic;color:var(--cobble);letter-spacing:0.04em;margin:2.2rem 0 0.9rem;border-left:2px solid var(--cobble);padding-left:1rem}
+.manifesto-list{list-style:none;padding:0;margin-bottom:1.4rem;display:flex;flex-direction:column;gap:1rem}
+.manifesto-list li{color:rgba(210,205,195,0.85);font-size:1rem;line-height:1.85;padding-left:1.5rem;position:relative;font-family:'Segoe UI',sans-serif}
+.manifesto-list li::before{content:'—';position:absolute;left:0;color:var(--cobble)}
+
+/* VIDEO */
+#video{border-top:1px solid var(--border)}
+.video-wrap{position:relative;width:100%;max-width:380px;padding-bottom:calc(380px * 16/9);background:var(--bg3);border:1px solid var(--border);border-radius:2px;overflow:hidden;margin:1rem auto 0}
+.video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;cursor:pointer}
+.play-btn{width:68px;height:68px;border-radius:50%;border:1px solid var(--cobble);display:flex;align-items:center;justify-content:center;background:var(--card);transition:all 0.2s}
+.play-btn:hover{background:var(--accent);border-color:var(--accent)}
+.play-btn:hover svg polygon{fill:var(--creme);stroke:var(--creme)}
+.play-btn svg{width:24px;height:24px;margin-left:3px}
+.play-btn svg polygon{fill:var(--accent);stroke:var(--accent);stroke-width:1}
+.video-label{color:var(--cobble);font-size:0.8rem;letter-spacing:0.08em;font-family:'Segoe UI',sans-serif}
+.video-embed{position:absolute;inset:0;width:100%;height:100%;border:none;display:none}
+
+/* FLIPBOOK */
+#flipbook{border-top:1px solid var(--border);background:var(--bg2);max-width:100%}
+.flipbook-inner{max-width:1100px;margin:0 auto;padding:6rem 2rem;display:flex;flex-direction:column;align-items:center}
+.flipbook-inner .section-label,.flipbook-inner h2{align-self:flex-start}
+.flipbook-inner h2{margin-bottom:2.5rem}
+#flipCanvas{display:block;border-radius:3px;cursor:pointer;filter:drop-shadow(0 8px 32px rgba(62,31,32,0.13));max-width:100%}
+.flipbook-controls{display:flex;align-items:center;gap:1.5rem;margin-top:2rem}
+.flip-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--accent);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-size:0.95rem}
+.flip-btn:hover:not(:disabled){border-color:var(--accent);background:var(--accent);color:var(--creme)}
+.flip-btn:disabled{opacity:0.28;cursor:default}
+.flip-dots{display:flex;gap:0.45rem}
+.flip-dot{width:7px;height:7px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:background 0.2s,transform 0.2s}
+.flip-dot.active{background:var(--accent);transform:scale(1.25)}
+.page-counter{font-size:0.72rem;letter-spacing:0.1em;color:var(--muted);font-family:'Segoe UI',sans-serif;min-width:52px;text-align:center}
+.flip-hint{font-size:0.7rem;color:var(--cobble);font-family:'Segoe UI',sans-serif;letter-spacing:0.06em;margin-top:0.9rem;opacity:0.7}
+
+/* CONTACT */
+#contact{border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start}
+.contact-info p{color:var(--muted);margin-bottom:2rem;line-height:1.85;font-family:'Segoe UI',sans-serif}
+.socials{display:flex;flex-direction:column}
+.social-link{display:flex;align-items:center;gap:0.75rem;color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;padding:0.75rem 0;border-bottom:1px solid var(--border);font-family:'Segoe UI',sans-serif}
+.social-link:hover{color:var(--accent)}
+.social-icon{width:32px;height:32px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:600;color:var(--accent);background:var(--card);font-family:'Segoe UI',sans-serif}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cobble);margin-bottom:0.5rem;font-family:'Segoe UI',sans-serif}
+.form-group input,.form-group textarea{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:0.75rem 1rem;font-family:'Segoe UI',sans-serif;font-size:0.9rem;border-radius:2px;outline:none;transition:border-color 0.2s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--cobble)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{width:100%}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--cobble);font-size:0.75rem;letter-spacing:0.08em;font-family:'Segoe UI',sans-serif}
+footer span{color:var(--accent)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.2}50%{opacity:0.8}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:700px){
+  #hero{padding:6rem 1.5rem 4rem}
+  .hero-deco{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  section,.manifesto-inner{padding:4rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <span class="logo-name">Forever Home</span>
+    <span class="logo-sub">Interiors</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#flipbook">Portfolio</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Interior Design Student</div>
+    <h1>Aanya Kaushik.<br/><em>Timeless Spaces.</em><br/>Lasting Impressions.</h1>
+    <p class="hero-sub">A second-year Interior Design student passionate about crafting spaces that are both functional and visually inspiring — where thoughtful design shapes how we live and feel.</p>
+    <div class="hero-btns">
+      <a href="#flipbook" class="btn btn-primary">View My Portfolio</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-deco">
+    <div class="hero-deco-ring"></div>
+    <div class="hero-deco-ring"></div>
+    <div class="hero-deco-ring"></div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-photo">
+      <div class="photo-placeholder">
+        <div class="photo-icon">👤</div>
+        <span style="font-size:.75rem;letter-spacing:.1em;font-family:'Segoe UI',sans-serif">Your Photo</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">About Me</p>
+      <h2>Designing spaces that<br/>resonate with emotion.</h2>
+      <p>Hi, I'm Aanya Kaushik, a second-year Interior Design student passionate about crafting spaces that are both functional and visually inspiring.</p>
+      <p>As I continue my journey in design, I enjoy exploring everything from conceptual floor plans to material selection, creating environments that resonate with emotion and enhance everyday experiences.</p>
+      <p>My work reflects a growing curiosity about how thoughtful design influences behavior, mood, and the way we interact with spaces.</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">Undergrad</div><div class="stat-label">Student</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Projects Done</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Internships Done</div></div>
+        <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Cups of Coffee</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div id="manifesto">
+  <div class="manifesto-inner reveal">
+    <p class="section-label">Manifesto</p>
+    <div class="manifesto-full">
+      <h3 class="manifesto-title">A Manifesto for Slow Interiors</h3>
+      <p class="manifesto-author">By Aanya Kaushik</p>
+      <p>Today, we are living in a world of "Fast Interiors." Just like fast fashion, we have fallen into a trap where furniture and home decor are treated as disposable items. We see a beautiful room on social media, we buy cheap versions of those items online, and a few years later when the trend changes or the leg breaks, we throw them away. Our homes have become temporary backdrops rather than meaningful places to live. This cycle of "buy and discard" is exhausting for the consumer and devastating for our world. We are surrounded by objects that have no soul, no history, and no future beyond the local landfill.</p>
+      <h4 class="manifesto-heading">The Issue: The Disposable Home</h4>
+      <p>The problem is that "fast design" is hollow. It relies on low-quality materials like particle board, toxic glues, and plastic that cannot be fixed once they break. These materials are designed to look good for a photo but fail under the pressure of real life. It ignores the environment, creating mountains of waste in our landfills. Every year, millions of tons of furniture are tossed aside simply because they weren't built to last more than a season.</p>
+      <p>But more importantly, this issue ignores the human spirit. When we fill our homes with things that have no history and no soul, we don't feel truly connected to our spaces. We live in rooms that feel like hotel suites — anonymous and replaceable. A home should be a collection of stories, not a collection of cardboard boxes delivered to your door. When every item in your room is a "temporary" solution, your life starts to feel temporary, too. We have lost the art of nesting and the patience required to build a home slowly and thoughtfully.</p>
+      <h4 class="manifesto-heading">The Problem of Modern Materials</h4>
+      <p>In contemporary design, we have become addicted to convenience. We want a room to look "finished" in a single weekend. To achieve this, designers and homeowners turn to mass-produced items that use massive amounts of timber. While wood is a natural material, the sheer volume of "fast furniture" being produced means we are cutting down trees at a rate that the earth cannot sustain. We are sacrificing our forests for coffee tables that will be replaced in three years. This is not just a design problem; it is a moral one. We must find a way to create beautiful, warm, and inviting spaces while minimising our impact on the natural world and protecting our trees.</p>
+      <h4 class="manifesto-heading">My Philosophy: Quality Over Hype</h4>
+      <p>As an interior designer, I refuse to be part of the "throwaway" cycle. I believe that a well-designed room should age with you. It should get better over time, not worse. I believe in the beauty of a scratch on a solid surface because it shows that a life was lived there. I believe that "new" is not always better than "old".</p>
+      <p>My philosophy is built on the idea of <strong>Slow Interiors.</strong> This means taking the time to choose the right piece rather than the fast piece. It means looking for materials that don't require the constant cutting of trees. It means valuing the work of a human hand over the output of a giant machine. I want to shift the focus from "how much can I buy?" to "how long can I keep this?"</p>
+      <h4 class="manifesto-heading">How I Will Work</h4>
+      <ul class="manifesto-list">
+        <li><strong>Choosing Real, Sustainable Materials:</strong> I will prioritise materials that last — stone, metal, and natural fabrics. I will minimise the use of new wood by looking for alternatives like bamboo, cork, or recycled materials that don't harm our forests. If it can't be repaired, it shouldn't be in the room.</li>
+        <li><strong>Supporting the Local and the Hand-made:</strong> I will look for local makers and craftsmen. A chair made by a person in your community is worth more than ten chairs made in a giant factory. These pieces carry the energy and skill of the person who made them, adding a layer of soul to the home that a factory-made item can never replicate.</li>
+        <li><strong>Designing for Evolution:</strong> I will design spaces that can change. A nursery today should be able to become a study tomorrow without needing to gut the whole room and start over. By planning for the future, we save money, time, and materials.</li>
+        <li><strong>Encouraging "Slow" Decisions:</strong> I will encourage my clients to buy less, but buy better. It is better to have one empty corner for a year than to fill it with a cheap piece of furniture you will hate in six months. Patience is a design tool just as important as a colour palette.</li>
+      </ul>
+      <h4 class="manifesto-heading">My Declaration</h4>
+      <p>My future practice will be about creating "Forever Homes". I am not interested in trends that expire in six months. I want to design interiors that people want to keep, care for, and eventually pass down. I choose to design for people, for the planet, and for the long haul. By choosing quality, minimising waste, and respecting our trees, we can create spaces that aren't just beautiful to look at, but beautiful to live in forever.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="reveal">
+    <p class="section-label">Featured</p>
+    <h2>Watch My Story</h2>
+    <div class="video-wrap">
+      <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg></div>
+        <span class="video-label">Click to play — replace with your video URL</span>
+      </div>
+      <iframe id="videoEmbed" class="video-embed" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FLIPBOOK -->
+<div id="flipbook">
+  <div class="flipbook-inner reveal">
+    <p class="section-label">Selected Work</p>
+    <h2>My Portfolio</h2>
+    <canvas id="flipCanvas"></canvas>
+    <div class="flipbook-controls">
+      <button class="flip-btn" id="prevBtn" onclick="flipPrev()" disabled>&#8592;</button>
+      <div class="flip-dots" id="flipDots"></div>
+      <span class="page-counter" id="pageCounter">1 / 6</span>
+      <button class="flip-btn" id="nextBtn" onclick="flipNext()">&#8594;</button>
+    </div>
+    <p class="flip-hint">click the right side to turn forward · left side to go back</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <p class="section-label">Contact</p>
+    <h2>Let's Connect.</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>I'm always open to conversations about design, internship opportunities, or collaborations. Feel free to reach out.</p>
+        <div class="socials">
+          <a href="#" class="social-link"><div class="social-icon">Li</div>LinkedIn</a>
+          <a href="https://www.instagram.com/aan_yaa23?igsh=MWNqcmpxb3M1NmhpMg==" target="_blank" rel="noopener noreferrer" class="social-link"><div class="social-icon">Ig</div>Instagram</a>
+          <a href="#" class="social-link"><div class="social-icon">Be</div>Behance</a>
+          <a href="#" class="social-link"><div class="social-icon">@</div>your@email.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Jane Smith"/></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="jane@example.com"/></div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell me about your project or opportunity..."></textarea></div>
+        <button class="btn btn-primary form-submit" onclick="handleSubmit(this)">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Designed with intention — <span>Aanya Kaushik</span> © 2026</p></footer>
+
+<script>
+/* ─────────────────────────────────────────
+   IMAGE URLs — paste your hosted URLs here
+   ───────────────────────────────────────── */
+const IMGS = {
+  topview:      '', // Top view floor plan rendering
+  masterBed:    '', // Master Bedroom render
+  kidsBed:      '', // Kids Bedroom render
+  masterBath:   '', // Master Bathroom render
+  kidsBath:     '', // Kids Bathroom render
+  ginkgoExt1:   '', // Ginkgo exterior view 1
+  ginkgoExt2:   '', // Ginkgo exterior view 2
+  ginkgoInt1:   '', // Ginkgo interior view 1
+  ginkgoInt2:   '', // Ginkgo interior view 2
+  ginkgoInt3:   '', // Ginkgo interior view 3
+  ginkgoInt4:   '', // Ginkgo interior view 4
+  ginkgoSec1:   '', // Ginkgo section view 1
+  ginkgoSec2:   '', // Ginkgo section view 2
+  ganguliaTop:  '', // Gangulia lighting top view
+  ganguliaLiv:  '', // Gangulia living room
+  ganguliaThm:  '', // Gangulia theatre room
+  ganguliaOfc:  '', // Gangulia office
+  ganguliaSlp:  '', // Gangulia bedroom
+  furnitureA:   '', // Furniture table design 1
+  furnitureB:   '', // Furniture table design 2
+  furnitureC:   '', // Furniture table design 3
+};
+
+/* preload */
+const loadedImgs = {};
+Object.entries(IMGS).forEach(([k,url])=>{
+  if(!url) return;
+  const i=new Image(); i.crossOrigin='anonymous';
+  i.onload=()=>{ loadedImgs[k]=i; if(!animating) requestAnimationFrame(ts=>draw(ts,true)); };
+  i.src=url;
+});
+
+/* ── CANVAS SETUP ── */
+const canvas = document.getElementById('flipCanvas');
+const ctx    = canvas.getContext('2d');
+const W=700, H=460;
+canvas.width=W; canvas.height=H;
+const SPINE=28, PL=SPINE;
+
+/* ── PAGE DEFINITIONS ── */
+const PAGES = [
+  {
+    bg:'#ede9e2', accent:'#6a5040',
+    title:'Top View Rendering',
+    tag:'Year 1 Project',
+    desc:'A rendered residential floor plan exploring spatial organisation, furniture placement, and material differentiation across living areas, bedrooms, kitchen, and outdoor spaces.',
+    layout:'hero', imgs:['topview']
+  },
+  {
+    bg:'#e8e2da', accent:'#5a4535',
+    title:'Bedroom Suite',
+    tag:'Year 1 Project',
+    desc:'Elevation renders of four rooms — exploring material, colour, and mood for each space.',
+    layout:'grid4', imgs:['masterBed','kidsBed','masterBath','kidsBath'],
+    labels:['Master Bedroom','Kids Bedroom','Master Bath','Kids Bath']
+  },
+  {
+    bg:'#e5dfd7', accent:'#5a4030',
+    title:'Ginkgo — Japanese Restaurant',
+    tag:'Internship Project',
+    desc:'Renovation of a Japanese restaurant, incorporating traditional architectural elements to create an authentic dining experience.',
+    layout:'stack2', imgs:['ginkgoExt1','ginkgoExt2']
+  },
+  {
+    bg:'#e2dcd4', accent:'#503a28',
+    title:'Ginkgo — Interior Views',
+    tag:'Internship Project',
+    desc:'Section elevations and interior perspectives exploring the spatial atmosphere, material selection, and layout of the restaurant.',
+    layout:'grid4', imgs:['ginkgoInt1','ginkgoInt2','ginkgoSec1','ginkgoSec2'],
+    labels:['Exterior A','Exterior B','Section A','Section B']
+  },
+  {
+    bg:'#eae4dc', accent:'#604838',
+    title:'Gangulia Residence',
+    tag:'Year 2 Project',
+    desc:'A lighting study exploring ambient, task, and accent lighting across multiple rooms — demonstrating how thoughtful placement shapes mood and practicality.',
+    layout:'grid3+1', imgs:['ganguliaThm','ganguliaOfc','ganguliaSlp','ganguliaTop']
+  },
+  {
+    bg:'#e7e1d9', accent:'#584030',
+    title:'Furniture Design',
+    tag:'Internship Project',
+    desc:'Custom table concepts developed during internship — exploring joinery details, structural connections, and the contrast of two wood types to highlight craftsmanship.',
+    layout:'trio', imgs:['furnitureA','furnitureB','furnitureC']
+  },
+];
+
+/* ── IMAGE / PLACEHOLDER DRAWING ── */
+function imgOrBox(key, x, y, w, h, label, ctx2) {
+  const c = ctx2 || ctx;
+  c.save();
+  c.beginPath(); c.rect(x,y,w,h); c.clip();
+  if (loadedImgs[key]) {
+    const img=loadedImgs[key];
+    const sc=Math.max(w/img.width, h/img.height);
+    const sw=img.width*sc, sh=img.height*sc;
+    c.drawImage(img, x+(w-sw)/2, y+(h-sh)/2, sw, sh);
+  } else {
+    c.fillStyle='rgba(170,159,149,0.22)'; c.fillRect(x,y,w,h);
+    c.strokeStyle='rgba(170,159,149,0.4)'; c.lineWidth=1;
+    c.strokeRect(x+1,y+1,w-2,h-2);
+    c.font=`${Math.max(9,Math.floor(h*0.1))}px Segoe UI,sans-serif`;
+    c.fillStyle='rgba(122,111,104,0.55)'; c.textAlign='center';
+    c.fillText(label||'[ image ]', x+w/2, y+h/2+4);
+  }
+  c.restore();
+}
+
+function wrapText(text, x, y, maxW, lineH) {
+  const words=text.split(' '); let line='', ly=y;
+  for(const w of words){
+    const t=line?line+' '+w:w;
+    if(ctx.measureText(t).width>maxW&&line){ctx.fillText(line,x,ly);line=w;ly+=lineH;}
+    else{line=t;}
+  }
+  ctx.fillText(line,x,ly);
+  return ly;
+}
+
+/* ── DRAW ONE PAGE ── */
+function drawPageContent(p, x, y, w, h) {
+  const pw=w, ph=h;
+
+  // background
+  ctx.fillStyle=p.bg; ctx.fillRect(x,y,pw,ph);
+
+  // subtle top rule
+  ctx.save();
+  ctx.strokeStyle='rgba(170,159,149,0.25)'; ctx.lineWidth=0.8;
+  ctx.beginPath(); ctx.moveTo(x+12,y+40); ctx.lineTo(x+pw-12,y+40); ctx.stroke();
+
+  // tag pill
+  const tagW=ctx.measureText(p.tag).width+20;
+  ctx.fillStyle='rgba(62,31,32,0.08)';
+  ctx.beginPath(); ctx.roundRect(x+pw-tagW-10,y+14,tagW,18,9); ctx.fill();
+  ctx.font='9px Segoe UI,sans-serif'; ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='right';
+  ctx.fillText(p.tag, x+pw-18, y+27);
+  ctx.restore();
+
+  const imgTop = y+48;
+  const PAD=10;
+
+  if(p.layout==='hero'){
+    const imgH = ph*0.6;
+    imgOrBox(p.imgs[0], x+PAD, imgTop, pw-PAD*2, imgH, 'Top View Floor Plan');
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.068)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop+imgH+24);
+    ctx.font=`${Math.floor(ph*0.042)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    wrapText(p.desc, x+PAD, imgTop+imgH+46, pw-PAD*2, ph*0.052);
+    ctx.restore();
+  }
+  else if(p.layout==='grid4'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.restore();
+    const gx=x+PAD, gy=imgTop+8;
+    const gw=(pw-PAD*3)/2, gh=(ph-gy+y-PAD*1.5)/2;
+    const labels=p.labels||['','','',''];
+    const positions=[[gx,gy],[gx+gw+PAD,gy],[gx,gy+gh+PAD],[gx+gw+PAD,gy+gh+PAD]];
+    positions.forEach(([ix,iy],i)=>{
+      imgOrBox(p.imgs[i]||'',ix,iy,gw,gh,labels[i]);
+      ctx.save(); ctx.font='9px Segoe UI,sans-serif';
+      ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
+      ctx.fillText(labels[i]||'',ix+gw/2,iy+gh+11);
+      ctx.restore();
+    });
+  }
+  else if(p.layout==='stack2'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.font=`${Math.floor(ph*0.038)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    const ty=wrapText(p.desc, x+PAD, imgTop+18, pw-PAD*2, ph*0.048);
+    ctx.restore();
+    const imgAreaTop=ty+16;
+    const iw=(pw-PAD*3)/2, ih=ph-(imgAreaTop-y)-PAD;
+    imgOrBox(p.imgs[0],x+PAD,imgAreaTop,iw,ih,'Exterior View 1');
+    imgOrBox(p.imgs[1],x+PAD*2+iw,imgAreaTop,iw,ih,'Exterior View 2');
+  }
+  else if(p.layout==='grid3+1'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.058)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.font=`${Math.floor(ph*0.037)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    wrapText(p.desc, x+PAD, imgTop+17, pw-PAD*2, ph*0.047);
+    ctx.restore();
+    const rowTop=imgTop+ph*0.21;
+    const rowH=(ph-(rowTop-y)-PAD*2)*0.52;
+    const cellW=(pw-PAD*4)/3;
+    [0,1,2].forEach(i=>imgOrBox(p.imgs[i]||'',x+PAD+i*(cellW+PAD),rowTop,cellW,rowH,['Theatre','Office','Bedroom'][i]));
+    const wideTop=rowTop+rowH+PAD;
+    const wideH=ph-(wideTop-y)-PAD;
+    imgOrBox(p.imgs[3]||'',x+PAD,wideTop,pw-PAD*2,wideH,'Top View — Lighting Plan');
+  }
+  else if(p.layout==='trio'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.font=`${Math.floor(ph*0.037)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    wrapText(p.desc, x+PAD, imgTop+18, pw*0.42, ph*0.048);
+    ctx.restore();
+    const ri=x+pw*0.46, riw=pw*0.52, rih=(ph-(imgTop-y)-PAD*3)*0.48;
+    imgOrBox(p.imgs[0]||'',ri,imgTop,riw,rih,'Side Table');
+    imgOrBox(p.imgs[1]||'',ri,imgTop+rih+PAD,riw/2-PAD/2,rih,'Table — Front');
+    imgOrBox(p.imgs[2]||'',ri+riw/2+PAD/2,imgTop+rih+PAD,riw/2-PAD/2,rih,'Table — Side');
+    const bottomTop=imgTop+rih*2+PAD*2;
+    if(bottomTop<y+ph-PAD){
+      const leftW=pw*0.44-PAD;
+      imgOrBox(p.imgs[1]||'',x+PAD,imgTop+ph*0.26,leftW,ph-(imgTop+ph*0.26-y)-PAD,'Table View');
+    }
+  }
+
+  ctx.save();
+  ctx.font='10px Segoe UI,sans-serif'; ctx.fillStyle='rgba(170,159,149,0.55)'; ctx.textAlign='center';
+  ctx.fillText(`${PAGES.indexOf(p)+1}  —  ${PAGES.length}`, x+pw/2, y+ph-8);
+  ctx.restore();
+}
+
+/* ── SPINE ── */
+function drawSpine(){
+  const g=ctx.createLinearGradient(0,0,SPINE,0);
+  g.addColorStop(0,'#b0a49a'); g.addColorStop(0.6,'#c9bfb3'); g.addColorStop(1,'#d2cdc3');
+  ctx.fillStyle=g; ctx.fillRect(0,0,SPINE,H);
+  ctx.strokeStyle='rgba(62,31,32,0.14)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(SPINE,0); ctx.lineTo(SPINE,H); ctx.stroke();
+  ctx.save(); ctx.translate(SPINE/2,H/2); ctx.rotate(-Math.PI/2);
+  ctx.font='8px Segoe UI,sans-serif'; ctx.fillStyle='rgba(62,31,32,0.3)'; ctx.textAlign='center';
+  ctx.fillText('AANYA KAUSHIK  ·  INTERIOR DESIGN',0,4);
+  ctx.restore();
+}
+
+/* ── ANIMATION ── */
+let cur=0, animating=false, animDir=1, animFrom=0, animTo=1, startTime=null;
+const DUR=820;
+function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+
+function draw(ts, staticOnly){
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#c9c0b5'; ctx.fillRect(3,3,W-3,H-3);
+  ctx.fillStyle='#ddd6cc'; ctx.fillRect(2,2,W-3,H-3);
+
+  if(!animating||staticOnly){
+    drawPageContent(PAGES[cur],PL,0,W-PL,H);
+    drawSpine(); return;
+  }
+
+  if(!startTime) startTime=ts;
+  const t=ease(Math.min((ts-startTime)/DUR,1));
+  const from=PAGES[animFrom], to=PAGES[animTo];
+  const pw=W-PL;
+
+  if(animDir===1){
+    drawPageContent(to,PL,0,pw,H);
+    const rx=PL+pw*(1-t), curl=Math.sin(t*Math.PI)*36;
+    ctx.save(); ctx.beginPath();
+    ctx.moveTo(PL,0); ctx.lineTo(rx,0);
+    ctx.quadraticCurveTo(rx+curl,H/2,rx,H);
+    ctx.lineTo(PL,H); ctx.closePath();
+    ctx.fillStyle=from.bg; ctx.fill(); ctx.clip();
+    drawPageContent(from,PL,0,pw,H); ctx.restore();
+    if(rx>PL+5){
+      ctx.save();
+      const sg=ctx.createLinearGradient(rx-50,0,rx+curl,0);
+      sg.addColorStop(0,'rgba(62,31,32,0)');
+      sg.addColorStop(1,`rgba(62,31,32,${0.2*Math.sin(t*Math.PI)})`);
+      ctx.fillStyle=sg; ctx.fillRect(PL,0,rx-PL+curl+2,H); ctx.restore();
+      const cg=ctx.createLinearGradient(rx+curl,0,rx+curl+45,0);
+      cg.addColorStop(0,`rgba(62,31,32,${0.12*Math.sin(t*Math.PI)})`);
+      cg.addColorStop(1,'rgba(62,31,32,0)');
+      ctx.fillStyle=cg; ctx.fillRect(rx+curl,0,45,H);
+    }
+  } else {
+    drawPageContent(to,PL,0,pw,H);
+    const rx=PL+pw*t, curl=Math.sin(t*Math.PI)*36;
+    ctx.save(); ctx.beginPath();
+    ctx.moveTo(PL,0); ctx.lineTo(rx,0);
+    ctx.quadraticCurveTo(rx-curl,H/2,rx,H);
+    ctx.lineTo(PL,H); ctx.closePath();
+    ctx.fillStyle=from.bg; ctx.fill(); ctx.clip();
+    drawPageContent(from,PL,0,pw,H); ctx.restore();
+    if(rx>PL+5){
+      const sg=ctx.createLinearGradient(rx-curl-2,0,rx+50,0);
+      sg.addColorStop(0,`rgba(62,31,32,${0.15*Math.sin(t*Math.PI)})`);
+      sg.addColorStop(1,'rgba(62,31,32,0)');
+      ctx.fillStyle=sg; ctx.fillRect(rx-curl-2,0,60,H);
+    }
+  }
+
+  drawSpine();
+  if((ts-startTime)<DUR){ requestAnimationFrame(draw); }
+  else { cur=animTo; animating=false; updateUI(); requestAnimationFrame(ts2=>draw(ts2,true)); }
+}
+
+function startFlip(dir){
+  if(animating) return;
+  const next=cur+dir;
+  if(next<0||next>=PAGES.length) return;
+  animDir=dir; animFrom=cur; animTo=next; animating=true; startTime=null;
+  requestAnimationFrame(draw);
+}
+function flipNext(){ startFlip(1) }
+function flipPrev(){ startFlip(-1) }
+
+function updateUI(){
+  document.getElementById('prevBtn').disabled=cur===0;
+  document.getElementById('nextBtn').disabled=cur===PAGES.length-1;
+  document.getElementById('pageCounter').textContent=`${cur+1} / ${PAGES.length}`;
+  [...document.getElementById('flipDots').children].forEach((d,i)=>d.classList.toggle('active',i===cur));
+}
+
+const dotsEl=document.getElementById('flipDots');
+PAGES.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='flip-dot'+(i===0?' active':'');
+  d.onclick=()=>{ if(!animating&&i!==cur){ const steps=Math.abs(i-cur),dir=i>cur?1:-1; let s=0; const go=()=>{if(s<steps){startFlip(dir);s++;setTimeout(go,DUR+40);}};go();}};
+  dotsEl.appendChild(d);
+});
+
+canvas.addEventListener('click',e=>{
+  const r=canvas.getBoundingClientRect(), x=(e.clientX-r.left)*(W/r.width);
+  if(x>W*0.55&&cur<PAGES.length-1) flipNext();
+  else if(x<W*0.45&&cur>0) flipPrev();
+});
+
+requestAnimationFrame(ts=>draw(ts,true));
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+function loadVideo(){
+  const src=prompt('Paste your YouTube or Vimeo embed URL:');
+  if(src){document.getElementById('videoEmbed').src=src;document.getElementById('videoEmbed').style.display='block';document.getElementById('videoPlaceholder').style.display='none';}
+}
+function handleSubmit(btn){btn.textContent='Message Sent ✓';btn.style.opacity='0.7';btn.disabled=true;}
+</script>
+</body>
+</html>
