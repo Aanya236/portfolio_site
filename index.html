@@ -167,10 +167,7 @@ footer span{color:var(--accent)}
 <section id="about">
   <div class="about-grid reveal">
     <div class="about-photo">
-      <div class="photo-placeholder">
-        <div class="photo-icon">👤</div>
-        <span style="font-size:.75rem;letter-spacing:.1em;font-family:'Segoe UI',sans-serif">Your Photo</span>
-      </div>
+      <img src="images/my image.jpg" alt="Profile" style="width:100%;height:100%;object-fit:cover;display:block;"/>
     </div>
     <div class="about-text">
       <p class="section-label">About Me</p>
@@ -180,7 +177,7 @@ footer span{color:var(--accent)}
       <p>My work reflects a growing curiosity about how thoughtful design influences behavior, mood, and the way we interact with spaces.</p>
       <div class="stats">
         <div class="stat"><div class="stat-num">Undergrad</div><div class="stat-label">Student</div></div>
-        <div class="stat"><div class="stat-num">4</div><div class="stat-label">Projects Done</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">Projects Done</div></div>
         <div class="stat"><div class="stat-num">2</div><div class="stat-label">Internships Done</div></div>
         <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Cups of Coffee</div></div>
       </div>
@@ -241,7 +238,7 @@ footer span{color:var(--accent)}
     <div class="flipbook-controls">
       <button class="flip-btn" id="prevBtn" onclick="flipPrev()" disabled>&#8592;</button>
       <div class="flip-dots" id="flipDots"></div>
-      <span class="page-counter" id="pageCounter">1 / 6</span>
+      <span class="page-counter" id="pageCounter">1 / 9</span>
       <button class="flip-btn" id="nextBtn" onclick="flipNext()">&#8594;</button>
     </div>
     <p class="flip-hint">click the right side to turn forward · left side to go back</p>
@@ -277,30 +274,54 @@ footer span{color:var(--accent)}
 
 <script>
 /* ─────────────────────────────────────────
-   IMAGE URLs — paste your hosted URLs here
+   IMAGE URLs
    ───────────────────────────────────────── */
 const IMGS = {
-  topview:      '', // Top view floor plan rendering
-  masterBed:    '', // Master Bedroom render
-  kidsBed:      '', // Kids Bedroom render
-  masterBath:   '', // Master Bathroom render
-  kidsBath:     '', // Kids Bathroom render
-  ginkgoExt1:   '', // Ginkgo exterior view 1
-  ginkgoExt2:   '', // Ginkgo exterior view 2
-  ginkgoInt1:   '', // Ginkgo interior view 1
-  ginkgoInt2:   '', // Ginkgo interior view 2
-  ginkgoInt3:   '', // Ginkgo interior view 3
-  ginkgoInt4:   '', // Ginkgo interior view 4
-  ginkgoSec1:   '', // Ginkgo section view 1
-  ginkgoSec2:   '', // Ginkgo section view 2
-  ganguliaTop:  '', // Gangulia lighting top view
-  ganguliaLiv:  '', // Gangulia living room
-  ganguliaThm:  '', // Gangulia theatre room
-  ganguliaOfc:  '', // Gangulia office
-  ganguliaSlp:  '', // Gangulia bedroom
-  furnitureA:   '', // Furniture table design 1
-  furnitureB:   '', // Furniture table design 2
-  furnitureC:   '', // Furniture table design 3
+  /* ── Year 1: Top View ── */
+  topview:      'images/2d Top view P1.jpg',
+
+  /* ── Year 1: 5 BHK House — Main Floor ── */
+  bhkLiving:    'images/view 1(living Room)P2.jpg',
+  bhkKitchen:   'images/VIEW3(KITCHEN)P2.jpg',
+  bhkPowder:    'images/VIEW7 (POWDER ROOM)P2.jpg',
+
+  /* ── Year 1: 5 BHK House — Guest Floor ── */
+  bhkGuest1:    'images/view 5 (guest room1)P2.jpg',
+  bhkBath1:     'images/VIEW 2(GUEST BATH1)P2.jpg',
+  bhkGrandma:   'images/VIEW8(GRANDMOTHER\'S ROOM)P2.jpg',
+  bhkGuest2:    'images/VIEW4 (GUEST ROOM 2)P2.jpg',
+  bhkBath2:     'images/view 6(GUEST BATH2)P2.jpg',
+  bhkFamily:    'images/VIEW 9 (FAMILY LOUNGE)P2.jpg',
+
+  /* ── Year 1: 5 BHK House — Master Suite ── */
+  masterBed:    'images/VIEW 10(MASTER BEDROOM)P2.jpg',
+  kidsBed:      'images/VIEW 11 (KIDS ROOM)P2.jpg',
+  masterBath:   'images/VIEW 14(MASTER BATH)P2.jpg',
+  kidsBath:     'images/VIEW 13 (KIDS BATH)P2.jpg',
+
+  /* ── Internship: Ginkgo Restaurant ── */
+  ginkgoExt1:   'images/View 1 P3.jpg',
+  ginkgoExt2:   'images/View 2 P3.jpg',
+  ginkgoInt1:   'images/View 3 P3.jpg',
+  ginkgoInt2:   'images/View 4 P3.jpg',
+  ginkgoInt3:   'images/View 5 P3.jpg',
+  ginkgoInt4:   'images/View 6 P3.jpg',
+  ginkgoSec1:   'images/View 7 P3.jpg',
+  ginkgoSec2:   'images/View 8 P3.jpg',
+  ginkgoSec3:   'images/View 9 P3.jpg',
+  ginkgoSec4:   'images/View 10 P3.jpg',
+
+  /* ── Year 2: Gangulia Residence ── */
+  ganguliaTop:  'images/VIEW1 P4.jpg',
+  ganguliaLiv:  'images/VIEW3 P4.jpg',
+  ganguliaThm:  'images/VIEW5 P4.jpg',
+  ganguliaOfc:  'images/VIEW2 P4.jpg',
+  ganguliaSlp:  'images/VIEW4 P4.jpg',
+
+  /* ── Internship: Furniture Design ── */
+  furnitureA:   'images/table design3 P5.jpg',
+  furnitureB:   'images/table view2 P5.jpg',
+  furnitureC:   'images/TABLE DESIGN1 P5.jpg',
 };
 
 /* preload */
@@ -319,8 +340,9 @@ const W=860, H=580;
 canvas.width=W; canvas.height=H;
 const SPINE=28, PL=SPINE;
 
-/* ── PAGE DEFINITIONS ── */
+/* ── PAGE DEFINITIONS  (9 pages total) ── */
 const PAGES = [
+  /* 1 — Top View Rendering */
   {
     bg:'#ede9e2', accent:'#6a5040',
     title:'Top View Rendering',
@@ -328,41 +350,82 @@ const PAGES = [
     desc:'A rendered residential floor plan exploring spatial organisation, furniture placement, and material differentiation across living areas, bedrooms, kitchen, and outdoor spaces.',
     layout:'hero', imgs:['topview']
   },
+
+  /* 2 — 5 BHK House: Main Floor */
+  {
+    bg:'#e9e4dc', accent:'#5e4535',
+    title:'5 BHK House — Main Floor',
+    tag:'Year 1 Project',
+    desc:'A two-floor 5BHK house exploring spatial planning, scale, and functionality — featuring kitchen, living room, and powder washroom rendered with full material and furniture detail.',
+    layout:'split1+2', imgs:['bhkLiving','bhkKitchen','bhkPowder'],
+    labels:['Living Room','Kitchen','Powder Washroom']
+  },
+
+  /* 3 — 5 BHK House: Guest Floor */
+  {
+    bg:'#e6e0d8', accent:'#5a4030',
+    title:'5 BHK House — Guest Floor',
+    tag:'Year 1 Project',
+    desc:'Six rooms across the guest level — two guest bedrooms, two bathrooms, a grandmother\'s room, and a family lounge, each with a distinct material palette and mood.',
+    layout:'grid6',
+    imgs:['bhkGuest1','bhkBath1','bhkGrandma','bhkGuest2','bhkBath2','bhkFamily'],
+    labels:['Guest Room 1','Guest Bath 1','Grandmother\'s Room','Guest Room 2','Guest Bath 2','Family Lounge']
+  },
+
+  /* 4 — 5 BHK House: Master Suite */
   {
     bg:'#e8e2da', accent:'#5a4535',
-    title:'Bedroom Suite',
+    title:'5 BHK House — Master Suite',
     tag:'Year 1 Project',
-    desc:'Elevation renders of four rooms — exploring material, colour, and mood for each space.',
+    desc:'Elevation renders of the upper private floor — master bedroom with bold botanical wallpaper, kids bedroom, and their respective bathrooms.',
     layout:'grid4', imgs:['masterBed','kidsBed','masterBath','kidsBath'],
     labels:['Master Bedroom','Kids Bedroom','Master Bath','Kids Bath']
   },
+
+  /* 5 — Ginkgo Exterior */
   {
     bg:'#e5dfd7', accent:'#5a4030',
     title:'Ginkgo — Japanese Restaurant',
     tag:'Internship Project',
-    desc:'Renovation of a Japanese restaurant, incorporating traditional architectural elements to create an authentic dining experience.',
+    desc:'Renovation of a Japanese restaurant incorporating traditional architectural elements — dark timber screens, open planting, and warm materiality — to create an authentic dining atmosphere.',
     layout:'stack2', imgs:['ginkgoExt1','ginkgoExt2']
   },
+
+  /* 6 — Ginkgo Interiors */
   {
-    bg:'#e2dcd4', accent:'#503a28',
-    title:'Ginkgo — Interior Views',
+    bg:'#e3ddd5', accent:'#503a28',
+    title:'Ginkgo — Interior & Section Views',
     tag:'Internship Project',
-    desc:'Section elevations and interior perspectives exploring the spatial atmosphere, material selection, and layout of the restaurant.',
-    layout:'grid4', imgs:['ginkgoInt1','ginkgoInt2','ginkgoSec1','ginkgoSec2'],
-    labels:['Exterior A','Exterior B','Section A','Section B']
+    desc:'Four interior perspective drawings and section elevations exploring the spatial sequence, bar counter, dining zones, and layered transparency of the restaurant.',
+    layout:'grid4', imgs:['ginkgoInt1','ginkgoInt2','ginkgoInt3','ginkgoInt4'],
+    labels:['Dining View','Bar Entry','Elevation A','Elevation B']
   },
+
+  /* 7 — Ginkgo Sections */
+  {
+    bg:'#e2dcd4', accent:'#4e3826',
+    title:'Ginkgo — Sections & Bar Detail',
+    tag:'Internship Project',
+    desc:'Technical section drawings revealing the full spatial depth of the restaurant — counter seating, shelving, outdoor terrace relationship, and interior volume.',
+    layout:'grid4', imgs:['ginkgoSec1','ginkgoSec2','ginkgoSec3','ginkgoSec4'],
+    labels:['Section A','Section B','Section C','Bar Perspective']
+  },
+
+  /* 8 — Gangulia Residence */
   {
     bg:'#eae4dc', accent:'#604838',
     title:'Gangulia Residence',
     tag:'Year 2 Project',
-    desc:'A lighting study exploring ambient, task, and accent lighting across multiple rooms — demonstrating how thoughtful placement shapes mood and practicality.',
+    desc:'A lighting study exploring ambient, task, and accent lighting across a home theatre, home office, and bedroom — demonstrating how thoughtful placement shapes mood and practicality.',
     layout:'grid3+1', imgs:['ganguliaThm','ganguliaOfc','ganguliaSlp','ganguliaTop']
   },
+
+  /* 9 — Furniture Design */
   {
     bg:'#e7e1d9', accent:'#584030',
     title:'Furniture Design',
     tag:'Internship Project',
-    desc:'Custom table concepts developed during internship — exploring joinery details, structural connections, and the contrast of two wood types to highlight craftsmanship.',
+    desc:'Custom table concepts developed during internship — exploring joinery details, structural connections, and the contrast of two wood types (dark espresso top, pale base) to highlight craftsmanship.',
     layout:'trio', imgs:['furnitureA','furnitureB','furnitureC']
   },
 ];
@@ -422,8 +485,8 @@ function drawPageContent(p, x, y, w, h) {
   const imgTop = y+48;
   const PAD=10;
 
+  /* ── hero ── */
   if(p.layout==='hero'){
-    // large image + text below
     const imgH = ph*0.6;
     imgOrBox(p.imgs[0], x+PAD, imgTop, pw-PAD*2, imgH, 'Top View Floor Plan');
     ctx.save();
@@ -435,8 +498,9 @@ function drawPageContent(p, x, y, w, h) {
     wrapText(p.desc, x+PAD, imgTop+imgH+46, pw-PAD*2, ph*0.052);
     ctx.restore();
   }
+
+  /* ── grid4 (2×2) ── */
   else if(p.layout==='grid4'){
-    // 2x2 image grid + title top
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -454,8 +518,9 @@ function drawPageContent(p, x, y, w, h) {
       ctx.restore();
     });
   }
+
+  /* ── stack2 ── */
   else if(p.layout==='stack2'){
-    // title + 2 stacked images side by side
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -469,8 +534,9 @@ function drawPageContent(p, x, y, w, h) {
     imgOrBox(p.imgs[0],x+PAD,imgAreaTop,iw,ih,'Exterior View 1');
     imgOrBox(p.imgs[1],x+PAD*2+iw,imgAreaTop,iw,ih,'Exterior View 2');
   }
+
+  /* ── grid3+1 ── */
   else if(p.layout==='grid3+1'){
-    // 3 smaller images top row + 1 wide bottom
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.058)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -485,10 +551,11 @@ function drawPageContent(p, x, y, w, h) {
     [0,1,2].forEach(i=>imgOrBox(p.imgs[i]||'',x+PAD+i*(cellW+PAD),rowTop,cellW,rowH,['Theatre','Office','Bedroom'][i]));
     const wideTop=rowTop+rowH+PAD;
     const wideH=ph-(wideTop-y)-PAD;
-    imgOrBox(p.imgs[3]||'',x+PAD,wideTop,pw-PAD*2,wideH,'Top View — Lighting Plan');
+    imgOrBox(p.imgs[3]||'',x+PAD,wideTop,pw-PAD*2,wideH,'Lighting Plan — Top View');
   }
+
+  /* ── trio ── */
   else if(p.layout==='trio'){
-    // title + desc left, 2 images right top, 1 wide bottom
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -498,13 +565,73 @@ function drawPageContent(p, x, y, w, h) {
     wrapText(p.desc, x+PAD, imgTop+18, pw*0.42, ph*0.048);
     ctx.restore();
     const ri=x+pw*0.46, riw=pw*0.52, rih=(ph-(imgTop-y)-PAD*3)*0.48;
-    imgOrBox(p.imgs[0]||'',ri,imgTop,riw,rih,'Side Table');
-    imgOrBox(p.imgs[1]||'',ri,imgTop+rih+PAD,riw/2-PAD/2,rih,'Table — Front');
-    imgOrBox(p.imgs[2]||'',ri+riw/2+PAD/2,imgTop+rih+PAD,riw/2-PAD/2,rih,'Table — Side');
-    const bottomTop=imgTop+rih*2+PAD*2;
-    if(bottomTop<y+ph-PAD){
-      const leftW=pw*0.44-PAD;
-      imgOrBox(p.imgs[1]||'',x+PAD,imgTop+ph*0.26,leftW,ph-(imgTop+ph*0.26-y)-PAD,'Table View');
+    imgOrBox(p.imgs[0]||'',ri,imgTop,riw,rih,'Table — Front View');
+    imgOrBox(p.imgs[1]||'',ri,imgTop+rih+PAD,riw/2-PAD/2,rih,'Side Table');
+    imgOrBox(p.imgs[2]||'',ri+riw/2+PAD/2,imgTop+rih+PAD,riw/2-PAD/2,rih,'Dining Table');
+    const leftW=pw*0.44-PAD;
+    imgOrBox(p.imgs[0]||'',x+PAD,imgTop+ph*0.26,leftW,ph-(imgTop+ph*0.26-y)-PAD,'Table Detail');
+  }
+
+  /* ── split1+2  (1 wide left, 2 stacked right) ── */
+  else if(p.layout==='split1+2'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.058)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.font=`${Math.floor(ph*0.037)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    wrapText(p.desc, x+PAD, imgTop+18, pw-PAD*2, ph*0.047);
+    ctx.restore();
+    const labels=p.labels||['','',''];
+    const areaTop=imgTop+ph*0.195;
+    const areaH=ph-(areaTop-y)-PAD;
+    const lw=(pw-PAD*3)*0.58;
+    const rw=pw-PAD*3-lw;
+    const rh=(areaH-PAD)/2;
+    imgOrBox(p.imgs[0]||'',x+PAD,areaTop,lw,areaH,labels[0]);
+    ctx.save(); ctx.font='9px Segoe UI,sans-serif';
+    ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
+    ctx.fillText(labels[0],x+PAD+lw/2,areaTop+areaH+11);
+    ctx.restore();
+    imgOrBox(p.imgs[1]||'',x+PAD*2+lw,areaTop,rw,rh,labels[1]);
+    ctx.save(); ctx.font='9px Segoe UI,sans-serif';
+    ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
+    ctx.fillText(labels[1],x+PAD*2+lw+rw/2,areaTop+rh+11);
+    ctx.restore();
+    imgOrBox(p.imgs[2]||'',x+PAD*2+lw,areaTop+rh+PAD,rw,rh,labels[2]);
+    ctx.save(); ctx.font='9px Segoe UI,sans-serif';
+    ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
+    ctx.fillText(labels[2],x+PAD*2+lw+rw/2,areaTop+rh+PAD+rh+11);
+    ctx.restore();
+  }
+
+  /* ── grid6  (3 columns × 2 rows) ── */
+  else if(p.layout==='grid6'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.055)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.font=`${Math.floor(ph*0.034)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    wrapText(p.desc, x+PAD, imgTop+16, pw-PAD*2, ph*0.044);
+    ctx.restore();
+    const labels=p.labels||['','','','','',''];
+    const areaTop=imgTop+ph*0.185;
+    const areaH=ph-(areaTop-y)-PAD*1.5;
+    const cols=3, rows=2;
+    const cellW=(pw-PAD*(cols+1))/cols;
+    const cellH=(areaH-PAD*(rows))/rows;
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<cols;c++){
+        const i=r*cols+c;
+        const ix=x+PAD+c*(cellW+PAD);
+        const iy=areaTop+r*(cellH+PAD);
+        imgOrBox(p.imgs[i]||'',ix,iy,cellW,cellH,labels[i]);
+        ctx.save(); ctx.font='8.5px Segoe UI,sans-serif';
+        ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
+        ctx.fillText(labels[i]||'',ix+cellW/2,iy+cellH+10);
+        ctx.restore();
+      }
     }
   }
 
