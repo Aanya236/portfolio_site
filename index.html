@@ -257,10 +257,10 @@ footer span{color:var(--accent)}
       <div class="contact-info">
         <p>I'm always open to conversations about design, internship opportunities, or collaborations. Feel free to reach out.</p>
         <div class="socials">
-          <a href="#" class="social-link"><div class="social-icon">Li</div>LinkedIn</a>
-          <a href="https://www.instagram.com/aan_yaa23?igsh=MWNqcmpxb3M1NmhpMg==" target="_blank" rel="noopener noreferrer" class="social-link"><div class="social-icon">Ig</div>Instagram</a>
+          <a href="https://www.linkedin.com/in/aanya-kaushik-337057319" target="_blank" class="social-link"><div class="social-icon">Li</div>LinkedIn</a>
+          <a href="#" class="social-link"><div class="social-icon">Ig</div>Instagram</a>
           <a href="#" class="social-link"><div class="social-icon">Be</div>Behance</a>
-          <a href="#" class="social-link"><div class="social-icon">@</div>your@email.com</a>
+          <a href="mailto:kaushikaanya236@gmail.com" class="social-link"><div class="social-icon">@</div>kaushikaanya236@gmail.com</a>
         </div>
       </div>
       <div>
@@ -315,7 +315,7 @@ Object.entries(IMGS).forEach(([k,url])=>{
 /* ── CANVAS SETUP ── */
 const canvas = document.getElementById('flipCanvas');
 const ctx    = canvas.getContext('2d');
-const W=700, H=460;
+const W=860, H=580;
 canvas.width=W; canvas.height=H;
 const SPINE=28, PL=SPINE;
 
@@ -423,6 +423,7 @@ function drawPageContent(p, x, y, w, h) {
   const PAD=10;
 
   if(p.layout==='hero'){
+    // large image + text below
     const imgH = ph*0.6;
     imgOrBox(p.imgs[0], x+PAD, imgTop, pw-PAD*2, imgH, 'Top View Floor Plan');
     ctx.save();
@@ -435,6 +436,7 @@ function drawPageContent(p, x, y, w, h) {
     ctx.restore();
   }
   else if(p.layout==='grid4'){
+    // 2x2 image grid + title top
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -453,6 +455,7 @@ function drawPageContent(p, x, y, w, h) {
     });
   }
   else if(p.layout==='stack2'){
+    // title + 2 stacked images side by side
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -467,6 +470,7 @@ function drawPageContent(p, x, y, w, h) {
     imgOrBox(p.imgs[1],x+PAD*2+iw,imgAreaTop,iw,ih,'Exterior View 2');
   }
   else if(p.layout==='grid3+1'){
+    // 3 smaller images top row + 1 wide bottom
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.058)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -484,6 +488,7 @@ function drawPageContent(p, x, y, w, h) {
     imgOrBox(p.imgs[3]||'',x+PAD,wideTop,pw-PAD*2,wideH,'Top View — Lighting Plan');
   }
   else if(p.layout==='trio'){
+    // title + desc left, 2 images right top, 1 wide bottom
     ctx.save();
     ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
     ctx.fillStyle=p.accent; ctx.textAlign='left';
@@ -503,6 +508,7 @@ function drawPageContent(p, x, y, w, h) {
     }
   }
 
+  // page number
   ctx.save();
   ctx.font='10px Segoe UI,sans-serif'; ctx.fillStyle='rgba(170,159,149,0.55)'; ctx.textAlign='center';
   ctx.fillText(`${PAGES.indexOf(p)+1}  —  ${PAGES.length}`, x+pw/2, y+ph-8);
@@ -627,7 +633,18 @@ function loadVideo(){
   const src=prompt('Paste your YouTube or Vimeo embed URL:');
   if(src){document.getElementById('videoEmbed').src=src;document.getElementById('videoEmbed').style.display='block';document.getElementById('videoPlaceholder').style.display='none';}
 }
-function handleSubmit(btn){btn.textContent='Message Sent ✓';btn.style.opacity='0.7';btn.disabled=true;}
+function handleSubmit(btn){
+  const name=document.querySelector('input[type="text"]').value.trim();
+  const email=document.querySelector('input[type="email"]').value.trim();
+  const msg=document.querySelector('textarea').value.trim();
+  if(!name||!email||!msg){alert('Please fill in all fields.');return;}
+  const subject=encodeURIComponent('Portfolio Enquiry from '+name);
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\nMessage:\n'+msg);
+  window.location.href='mailto:kaushikaanya236@gmail.com?subject='+subject+'&body='+body;
+  btn.textContent='Opening Gmail ✓';
+  btn.style.opacity='0.7';
+  btn.disabled=true;
+}
 </script>
 </body>
 </html>
