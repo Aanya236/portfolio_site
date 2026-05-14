@@ -358,20 +358,20 @@ const PAGES = [
     bg:'#e6e0d8', accent:'#5a4030',
     title:'5 BHK House — Guest Floor',
     tag:'Year 1 Project',
-    desc:'Six rooms across the guest level — two guest bedrooms, two bathrooms, a grandmother\'s room, and a family lounge, each with a distinct material palette and mood.',
-    layout:'grid6',
-    imgs:['bhkGuest1','bhkBath1','bhkGrandma','bhkGuest2','bhkBath2','bhkFamily'],
-    labels:['Guest Room 1','Guest Bath 1','Grandmother\'s Room','Guest Room 2','Guest Bath 2','Family Lounge']
+    desc:'Four rooms across the guest level — two guest bedrooms and two bathrooms, each with a distinct material palette and mood.',
+    layout:'grid4',
+    imgs:['bhkGuest1','bhkBath1','bhkGuest2','bhkBath2'],
+    labels:['Guest Room 1','Guest Bath 1','Guest Room 2','Guest Bath 2']
   },
 
   /* 4 — 5 BHK House: Master Suite */
   {
     bg:'#e8e2da', accent:'#5a4535',
-    title:'5 BHK House — Master Suite',
+    title:'5 BHK House — Kids Suite',
     tag:'Year 1 Project',
-    desc:'Elevation renders of the upper private floor — master bedroom with bold botanical wallpaper, kids bedroom, and their respective bathrooms.',
-    layout:'grid4', imgs:['masterBed','kidsBed','masterBath','kidsBath'],
-    labels:['Master Bedroom','Kids Bedroom','Master Bath','Kids Bath']
+    desc:'Elevation renders of the kids suite — bedroom and bathroom with playful material choices and thoughtful spatial planning.',
+    layout:'stack2', imgs:['kidsBed','kidsBath'],
+    labels:['Kids Bedroom','Kids Bath']
   },
 
   /* 5 — Ginkgo Exterior */
@@ -396,11 +396,11 @@ const PAGES = [
   /* 7 — Ginkgo Sections */
   {
     bg:'#e2dcd4', accent:'#4e3826',
-    title:'Ginkgo — Sections & Bar Detail',
+    title:'Ginkgo — Sections',
     tag:'Internship Project',
     desc:'Technical section drawings revealing the full spatial depth of the restaurant — counter seating, shelving, outdoor terrace relationship, and interior volume.',
-    layout:'grid4', imgs:['ginkgoSec1','ginkgoSec2','ginkgoSec3','ginkgoSec4'],
-    labels:['Section A','Section B','Section C','Bar Perspective']
+    layout:'grid3', imgs:['ginkgoSec1','ginkgoSec2','ginkgoSec3'],
+    labels:['Section A','Section B','Section C']
   },
 
   /* 8 — Gangulia Residence */
@@ -507,6 +507,30 @@ function drawPageContent(p, x, y, w, h) {
       ctx.save(); ctx.font='9px Segoe UI,sans-serif';
       ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
       ctx.fillText(labels[i]||'',ix+gw/2,iy+gh+11);
+      ctx.restore();
+    });
+  }
+
+  /* ── grid3 (3 equal columns, 1 row) ── */
+  else if(p.layout==='grid3'){
+    ctx.save();
+    ctx.font=`italic ${Math.floor(ph*0.06)}px Georgia,serif`;
+    ctx.fillStyle=p.accent; ctx.textAlign='left';
+    ctx.fillText(p.title, x+PAD, imgTop-4);
+    ctx.font=`${Math.floor(ph*0.037)}px Segoe UI,sans-serif`;
+    ctx.fillStyle='rgba(122,111,104,0.9)';
+    wrapText(p.desc, x+PAD, imgTop+18, pw-PAD*2, ph*0.047);
+    ctx.restore();
+    const labels=p.labels||['','',''];
+    const areaTop=imgTop+ph*0.2;
+    const areaH=ph-(areaTop-y)-PAD*1.5;
+    const cellW=(pw-PAD*4)/3;
+    [0,1,2].forEach(i=>{
+      const ix=x+PAD+i*(cellW+PAD);
+      imgOrBox(p.imgs[i]||'',ix,areaTop,cellW,areaH,labels[i]);
+      ctx.save(); ctx.font='9px Segoe UI,sans-serif';
+      ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
+      ctx.fillText(labels[i]||'',ix+cellW/2,areaTop+areaH+11);
       ctx.restore();
     });
   }
