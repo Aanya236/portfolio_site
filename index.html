@@ -75,15 +75,8 @@ h2{font-size:2rem;font-weight:400;margin-bottom:2rem;line-height:1.25;color:var(
 
 /* VIDEO */
 #video{border-top:1px solid var(--border)}
-.video-wrap{position:relative;width:100%;max-width:380px;padding-bottom:calc(380px * 16/9);background:var(--bg3);border:1px solid var(--border);border-radius:2px;overflow:hidden;margin:1rem auto 0}
-.video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;cursor:pointer}
-.play-btn{width:68px;height:68px;border-radius:50%;border:1px solid var(--cobble);display:flex;align-items:center;justify-content:center;background:var(--card);transition:all 0.2s}
-.play-btn:hover{background:var(--accent);border-color:var(--accent)}
-.play-btn:hover svg polygon{fill:var(--creme);stroke:var(--creme)}
-.play-btn svg{width:24px;height:24px;margin-left:3px}
-.play-btn svg polygon{fill:var(--accent);stroke:var(--accent);stroke-width:1}
-.video-label{color:var(--cobble);font-size:0.8rem;letter-spacing:0.08em;font-family:'Segoe UI',sans-serif}
-.video-embed{position:absolute;inset:0;width:100%;height:100%;border:none;display:none}
+.video-wrap{width:100%;max-width:720px;background:var(--bg3);border:1px solid var(--border);border-radius:2px;overflow:hidden;margin:1rem auto 0}
+.video-wrap video{width:100%;height:auto;display:block}
 
 /* FLIPBOOK */
 #flipbook{border-top:1px solid var(--border);background:var(--bg2);max-width:100%}
@@ -220,11 +213,10 @@ footer span{color:var(--accent)}
     <p class="section-label">Featured</p>
     <h2>Watch My Story</h2>
     <div class="video-wrap">
-      <div class="video-placeholder" id="videoPlaceholder" onclick="loadVideo()">
-        <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg></div>
-        <span class="video-label">Click to play — replace with your video URL</span>
-      </div>
-      <iframe id="videoEmbed" class="video-embed" allowfullscreen></iframe>
+      <video controls preload="metadata">
+        <source src="demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </section>
@@ -274,54 +266,54 @@ footer span{color:var(--accent)}
 
 <script>
 /* ─────────────────────────────────────────
-   IMAGE URLs
+   IMAGE URLs — paste your hosted URLs here
    ───────────────────────────────────────── */
 const IMGS = {
   /* ── Year 1: Top View ── */
-  topview:      'images/2d Top view P1.png',
+  topview:      'images/2d Top view P1.jpg', // Top view floor plan rendering
 
   /* ── Year 1: 5 BHK House — Main Floor ── */
-  bhkLiving:    'images/view 1(living Room)P2.jpeg',
-  bhkKitchen:   'images/VIEW3(KITCHEN)P2.jpeg',
-  bhkPowder:    'images/VIEW7 (POWDER ROOM)P2.jpeg',
+  bhkLiving:    'images/view 1(living Room)P2.jpg', // 5BHK Living Room elevation
+  bhkKitchen:   'images/VIEW3(KITCHEN)P2.jpg', // 5BHK Kitchen elevation
+  bhkPowder:    'images/VIEW7 (POWDER ROOM)P2.jpg', // 5BHK Powder Washroom elevation
 
   /* ── Year 1: 5 BHK House — Guest Floor ── */
-  bhkGuest1:    'images/view 5 (guest room1)P2.jpeg',
-  bhkBath1:     'images/VIEW 2(GUEST BATH1)P2.jpeg',
-  bhkGrandma:   'images/VIEW8(GRANDMOTHER\'S ROOM)P2.jpeg',
-  bhkGuest2:    'images/VIEW4 (GUEST ROOM 2)P2.jpeg',
-  bhkBath2:     'images/view 6(GUEST BATH2)P2.jpeg',
-  bhkFamily:    'images/VIEW 9 (FAMILY LOUNGE)P2.jpeg',
+  bhkGuest1:    'images/view 5 (guest room1)P2.jpg', // 5BHK Guest Room 1
+  bhkBath1:     'images/VIEW 2(GUEST BATH1)P2.jpg', // 5BHK Guest Bath 1
+  bhkGrandma:   'images/VIEW8(GRANDMOTHER\'S ROOM)P2.jpg', // 5BHK Grandmother's Room
+  bhkGuest2:    'images/VIEW4 (GUEST ROOM 2)P2.jpg', // 5BHK Guest Room 2
+  bhkBath2:     'images/view 6(GUEST BATH2)P2.jpg', // 5BHK Guest Bath 2
+  bhkFamily:    '', // 5BHK Family Lounge
 
   /* ── Year 1: 5 BHK House — Master Suite ── */
-  masterBed:    'images/VIEW 10(MASTER BEDROOM)P2.jpeg',
-  kidsBed:      'images/VIEW 11 (KIDS ROOM)P2.jpeg',
-  masterBath:   'images/VIEW 14(MASTER BATH)P2.jpeg',
-  kidsBath:     'images/VIEW 13 (KIDS BATH)P2.jpeg',
+  masterBed:    '', // Master Bedroom render
+  kidsBed:      '', // Kids Bedroom render
+  masterBath:   '', // Master Bathroom render
+  kidsBath:     '', // Kids Bathroom render
 
   /* ── Internship: Ginkgo Restaurant ── */
-  ginkgoExt1:   'images/View 1 P3.jpg',
-  ginkgoExt2:   'images/View 2 P3.jpg',
-  ginkgoInt1:   'images/View 3 P3.jpg',
-  ginkgoInt2:   'images/View 4 P3.jpg',
-  ginkgoInt3:   'images/View 5 P3.jpg',
-  ginkgoInt4:   'images/View 6 P3.jpg',
-  ginkgoSec1:   'images/View 7 P3.jpg',
-  ginkgoSec2:   'images/View 8 P3.jpg',
-  ginkgoSec3:   'images/View 9 P3.jpg',
-  ginkgoSec4:   'images/View 10 P3.jpg',
+  ginkgoExt1:   '', // Ginkgo exterior view 1
+  ginkgoExt2:   '', // Ginkgo exterior view 2
+  ginkgoInt1:   '', // Ginkgo interior view 1
+  ginkgoInt2:   '', // Ginkgo interior view 2
+  ginkgoInt3:   '', // Ginkgo interior view 3
+  ginkgoInt4:   '', // Ginkgo interior view 4
+  ginkgoSec1:   '', // Ginkgo section view 1
+  ginkgoSec2:   '', // Ginkgo section view 2
+  ginkgoSec3:   '', // Ginkgo section view 3
+  ginkgoSec4:   '', // Ginkgo section view 4 (perspective bar)
 
   /* ── Year 2: Gangulia Residence ── */
-  ganguliaTop:  'images/VIEW1 P4.jpeg',
-  ganguliaLiv:  'images/VIEW3 P4.jpeg',
-  ganguliaThm:  'images/VIEW5 P4.jpeg',
-  ganguliaOfc:  'images/VIEW2 P4.jpeg',
-  ganguliaSlp:  'images/VIEW4 P4.jpeg',
+  ganguliaTop:  '', // Gangulia lighting top view / bedroom aerial
+  ganguliaLiv:  '', // Gangulia living room aerial
+  ganguliaThm:  '', // Gangulia theatre room
+  ganguliaOfc:  '', // Gangulia office
+  ganguliaSlp:  '', // Gangulia bedroom
 
   /* ── Internship: Furniture Design ── */
-  furnitureA:   'images/table design3 P5.jpg',
-  furnitureB:   'images/table view2 P5.jpg',
-  furnitureC:   'images/TABLE DESIGN1 P5.jpg',
+  furnitureA:   '', // Round table with tapered legs
+  furnitureB:   '', // Side table — pedestal base
+  furnitureC:   '', // Dining table — cylinder legs
 };
 
 /* preload */
@@ -585,19 +577,22 @@ function drawPageContent(p, x, y, w, h) {
     const labels=p.labels||['','',''];
     const areaTop=imgTop+ph*0.195;
     const areaH=ph-(areaTop-y)-PAD;
-    const lw=(pw-PAD*3)*0.58;
-    const rw=pw-PAD*3-lw;
-    const rh=(areaH-PAD)/2;
+    const lw=(pw-PAD*3)*0.58;      // wide left image
+    const rw=pw-PAD*3-lw;          // right column width
+    const rh=(areaH-PAD)/2;        // each right image height
+    // left — large image (Living Room)
     imgOrBox(p.imgs[0]||'',x+PAD,areaTop,lw,areaH,labels[0]);
     ctx.save(); ctx.font='9px Segoe UI,sans-serif';
     ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
     ctx.fillText(labels[0],x+PAD+lw/2,areaTop+areaH+11);
     ctx.restore();
+    // right top — Kitchen
     imgOrBox(p.imgs[1]||'',x+PAD*2+lw,areaTop,rw,rh,labels[1]);
     ctx.save(); ctx.font='9px Segoe UI,sans-serif';
     ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
     ctx.fillText(labels[1],x+PAD*2+lw+rw/2,areaTop+rh+11);
     ctx.restore();
+    // right bottom — Powder Washroom
     imgOrBox(p.imgs[2]||'',x+PAD*2+lw,areaTop+rh+PAD,rw,rh,labels[2]);
     ctx.save(); ctx.font='9px Segoe UI,sans-serif';
     ctx.fillStyle='rgba(62,31,32,0.45)'; ctx.textAlign='center';
@@ -756,10 +751,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
-function loadVideo(){
-  const src=prompt('Paste your YouTube or Vimeo embed URL:');
-  if(src){document.getElementById('videoEmbed').src=src;document.getElementById('videoEmbed').style.display='block';document.getElementById('videoPlaceholder').style.display='none';}
-}
+
 function handleSubmit(btn){
   const name=document.querySelector('input[type="text"]').value.trim();
   const email=document.querySelector('input[type="email"]').value.trim();
