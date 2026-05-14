@@ -17,23 +17,23 @@ const IMGS = {
   topview:     'images/2d Top view P1.png',
 
   /* ── Year 1: 5 BHK House — Main Floor ── */
-  bhkLiving:   'images/view 1(living Room)P2.JPEG',
-  bhkKitchen:  'images/VIEW3(KITCHEN)P2.JPEG',
-  bhkPowder:   'images/VIEW7 (POWDER ROOM)P2.JPEG',
+  bhkLiving:   'images/view 1(living Room)P2.jpeg',
+  bhkKitchen:  'images/VIEW3(KITCHEN)P2.jpeg',
+  bhkPowder:   'images/VIEW7 (POWDER ROOM)P2.jpeg',
 
   /* ── Year 1: 5 BHK House — Guest Floor ── */
-  bhkGuest1:   'images/view 5 (guest room1)P2.JPEG',
-  bhkBath1:    'images/VIEW 2(GUEST BATH1)P2.JPEG',
-  bhkGrandma:  'images/VIEW8(GRANDMOTHER\'S ROOM)P2.JPEG',
-  bhkGuest2:   'images/VIEW4 (GUEST ROOM 2)P2.JPEG',
-  bhkBath2:    'images/view 6(GUEST BATH2)P2.JPEG',
-  bhkFamily:   'images/VIEW 9 (FAMILY LOUNGE)P2.JPEG',
+  bhkGuest1:   'images/view 5 (guest room1)P2.jpeg',
+  bhkBath1:    'images/VIEW 2(GUEST BATH1)P2.jpeg',
+  bhkGrandma:  'images/VIEW8(GRANDMOTHER\'S ROOM)P2.jpeg',
+  bhkGuest2:   'images/VIEW4 (GUEST ROOM 2)P2.jpeg',
+  bhkBath2:    'images/view 6(GUEST BATH2)P2.jpeg',
+  bhkFamily:   'images/VIEW 9 (FAMILY LOUNGE)P2.jpeg',
 
   /* ── Year 1: 5 BHK House — Master Suite ── */
-  masterBed:   'images/VIEW 10(MASTER BEDROOM)P2.JPEG',
-  kidsBed:     'images/VIEW 11 (KIDS ROOM)P2.JPEG',
-  masterBath:  'images/VIEW 14(MASTER BATH)P2.JPEG',
-  kidsBath:    'images/VIEW 13 (KIDS BATH)P2.JPEG',
+  masterBed:   'images/VIEW 10(MASTER BEDROOM)P2.jpeg',
+  kidsBed:     'images/VIEW 11 (KIDS ROOM)P2.jpeg',
+  masterBath:  'images/VIEW 14(MASTER BATH)P2.jpeg',
+  kidsBath:    'images/VIEW 13 (KIDS BATH)P2.jpeg',
 
   /* ── Internship: Ginkgo Restaurant ── */
   ginkgoExt1:  'images/View 1 P3.jpg',
@@ -48,11 +48,11 @@ const IMGS = {
   ginkgoSec4:  'images/View 10 P3.jpg',
 
   /* ── Year 2: Gangulia Residence ── */
-  ganguliaTop: 'images/VIEW1 P4.JPEG',
-  ganguliaLiv: 'images/VIEW3 P4.JPEG',
-  ganguliaThm: 'images/VIEW5 P4.JPEG',
-  ganguliaOfc: 'images/VIEW2 P4.JPEG',
-  ganguliaSlp: 'images/VIEW4 P4.JPEG',
+  ganguliaTop: 'images/VIEW1 P4.jpeg',
+  ganguliaLiv: 'images/VIEW3 P4.jpeg',
+  ganguliaThm: 'images/VIEW5 P4.jpeg',
+  ganguliaOfc: 'images/VIEW2 P4.jpeg',
+  ganguliaSlp: 'images/VIEW4 P4.jpeg',
 
   /* ── Internship: Furniture Design ── */
   furnitureA:  'images/table design3 P5.jpg',
