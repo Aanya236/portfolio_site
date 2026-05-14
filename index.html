@@ -320,7 +320,7 @@ const IMGS = {
 const loadedImgs = {};
 Object.entries(IMGS).forEach(([k,url])=>{
   if(!url) return;
-  const i=new Image(); i.crossOrigin='anonymous';
+  const i=new Image();
   i.onload=()=>{ loadedImgs[k]=i; if(!animating) requestAnimationFrame(ts=>draw(ts,true)); };
   i.src=url;
 });
