@@ -24,15 +24,11 @@ const IMGS = {
   /* ── Year 1: 5 BHK House — Guest Floor ── */
   bhkGuest1:   'images/view 5 (guest room1)P2.jpeg',
   bhkBath1:    'images/VIEW 2(GUEST BATH1)P2.jpeg',
-  bhkGrandma:  'images/VIEW8(GRANDMOTHER\'S ROOM)P2.jpeg',
   bhkGuest2:   'images/VIEW4 (GUEST ROOM 2)P2.jpeg',
   bhkBath2:    'images/view 6(GUEST BATH2)P2.jpeg',
-  bhkFamily:   'images/VIEW 9 (FAMILY LOUNGE)P2.jpeg',
 
-  /* ── Year 1: 5 BHK House — Master Suite ── */
-  masterBed:   'images/VIEW 10(MASTER BEDROOM)P2.jpeg',
+  /* ── Year 1: 5 BHK House — Kids Suite ── */
   kidsBed:     'images/VIEW 11 (KIDS ROOM)P2.jpeg',
-  masterBath:  'images/VIEW 14(MASTER BATH)P2.jpeg',
   kidsBath:    'images/VIEW 13 (KIDS BATH)P2.jpeg',
 
   /* ── Internship: Ginkgo Restaurant ── */
@@ -45,11 +41,9 @@ const IMGS = {
   ginkgoSec1:  'images/View 7 P3.jpg',
   ginkgoSec2:  'images/View 8 P3.jpg',
   ginkgoSec3:  'images/View 9 P3.jpg',
-  ginkgoSec4:  'images/View 10 P3.jpg',
 
   /* ── Year 2: Gangulia Residence ── */
   ganguliaTop: 'images/VIEW1 P4.jpeg',
-  ganguliaLiv: 'images/VIEW3 P4.jpeg',
   ganguliaThm: 'images/VIEW5 P4.jpeg',
   ganguliaOfc: 'images/VIEW2 P4.jpeg',
   ganguliaSlp: 'images/VIEW4 P4.jpeg',
@@ -69,7 +63,7 @@ const PAGES = [
     desc: 'A rendered residential floor plan exploring spatial organisation, furniture placement, and material differentiation across living areas, bedrooms, kitchen, and outdoor spaces.',
     layout: 'hero',
     imgs: ['topview'],
-    fits: ['contain'],   // floor plan — always show in full, never crop
+    fits: ['contain'],
   },
 
   /* 2 — 5 BHK House: Main Floor */
@@ -80,7 +74,7 @@ const PAGES = [
     desc: 'A two-floor 5BHK house exploring spatial planning, scale, and functionality — featuring kitchen, living room, and powder washroom rendered with full material and furniture detail.',
     layout: 'split1+2',
     imgs: ['bhkLiving', 'bhkKitchen', 'bhkPowder'],
-    fits: ['cover', 'cover', 'cover'],  // perspective renders fill well
+    fits: ['cover', 'cover', 'cover'],
     labels: ['Living Room', 'Kitchen', 'Powder Washroom'],
   },
 
@@ -89,23 +83,23 @@ const PAGES = [
     bg: '#e6e0d8', accent: '#5a4030',
     title: '5 BHK House — Guest Floor',
     tag: 'Year 1 Project',
-    desc: 'Six rooms across the guest level — two guest bedrooms, two bathrooms, a grandmother\'s room, and a family lounge, each with a distinct material palette and mood.',
-    layout: 'grid6',
-    imgs: ['bhkGuest1', 'bhkBath1', 'bhkGrandma', 'bhkGuest2', 'bhkBath2', 'bhkFamily'],
-    fits: ['cover', 'cover', 'cover', 'cover', 'cover', 'cover'],
-    labels: ['Guest Room 1', 'Guest Bath 1', 'Grandmother\'s Room', 'Guest Room 2', 'Guest Bath 2', 'Family Lounge'],
+    desc: 'Four rooms across the guest level — two guest bedrooms and two bathrooms, each with a distinct material palette and mood.',
+    layout: 'grid4',
+    imgs: ['bhkGuest1', 'bhkBath1', 'bhkGuest2', 'bhkBath2'],
+    fits: ['cover', 'cover', 'cover', 'cover'],
+    labels: ['Guest Room 1', 'Guest Bath 1', 'Guest Room 2', 'Guest Bath 2'],
   },
 
-  /* 4 — 5 BHK House: Master Suite */
+  /* 4 — 5 BHK House: Kids Suite */
   {
     bg: '#e8e2da', accent: '#5a4535',
-    title: '5 BHK House — Master Suite',
+    title: '5 BHK House — Kids Suite',
     tag: 'Year 1 Project',
-    desc: 'Elevation renders of the upper private floor — master bedroom with bold botanical wallpaper, kids bedroom, and their respective bathrooms.',
-    layout: 'grid4',
-    imgs: ['masterBed', 'kidsBed', 'masterBath', 'kidsBath'],
-    fits: ['cover', 'cover', 'cover', 'cover'],
-    labels: ['Master Bedroom', 'Kids Bedroom', 'Master Bath', 'Kids Bath'],
+    desc: 'Elevation renders of the kids suite — bedroom and bathroom with playful material choices and thoughtful spatial planning.',
+    layout: 'stack2',
+    imgs: ['kidsBed', 'kidsBath'],
+    fits: ['cover', 'cover'],
+    labels: ['Kids Bedroom', 'Kids Bath'],
   },
 
   /* 5 — Ginkgo: Exterior */
@@ -127,20 +121,20 @@ const PAGES = [
     desc: 'Four interior perspective drawings and section elevations exploring the spatial sequence, bar counter, dining zones, and layered transparency of the restaurant.',
     layout: 'grid4',
     imgs: ['ginkgoInt1', 'ginkgoInt2', 'ginkgoInt3', 'ginkgoInt4'],
-    fits: ['contain', 'contain', 'contain', 'contain'],  // section drawings — preserve full composition
+    fits: ['contain', 'contain', 'contain', 'contain'],
     labels: ['Dining View', 'Bar Entry', 'Elevation A', 'Elevation B'],
   },
 
   /* 7 — Ginkgo: Sections */
   {
     bg: '#e2dcd4', accent: '#4e3826',
-    title: 'Ginkgo — Sections & Bar Detail',
+    title: 'Ginkgo — Sections',
     tag: 'Internship Project',
     desc: 'Technical section drawings revealing the full spatial depth of the restaurant — counter seating, shelving, outdoor terrace relationship, and interior volume.',
-    layout: 'grid4',
-    imgs: ['ginkgoSec1', 'ginkgoSec2', 'ginkgoSec3', 'ginkgoSec4'],
-    fits: ['contain', 'contain', 'contain', 'contain'],  // technical drawings — never crop
-    labels: ['Section A', 'Section B', 'Section C', 'Bar Perspective'],
+    layout: 'grid3',
+    imgs: ['ginkgoSec1', 'ginkgoSec2', 'ginkgoSec3'],
+    fits: ['contain', 'contain', 'contain'],
+    labels: ['Section A', 'Section B', 'Section C'],
   },
 
   /* 8 — Gangulia Residence */
@@ -151,7 +145,7 @@ const PAGES = [
     desc: 'A lighting study exploring ambient, task, and accent lighting across a home theatre, home office, and bedroom — demonstrating how thoughtful placement shapes mood and practicality.',
     layout: 'grid3+1',
     imgs: ['ganguliaThm', 'ganguliaOfc', 'ganguliaSlp', 'ganguliaTop'],
-    fits: ['cover', 'cover', 'cover', 'contain'],  // top-view plan: contain
+    fits: ['cover', 'cover', 'cover', 'contain'],
   },
 
   /* 9 — Furniture Design */
@@ -162,6 +156,6 @@ const PAGES = [
     desc: 'Custom table concepts developed during internship — exploring joinery details, structural connections, and the contrast of two wood types to highlight craftsmanship.',
     layout: 'trio',
     imgs: ['furnitureA', 'furnitureB', 'furnitureC'],
-    fits: ['contain', 'contain', 'contain'],  // product renders — preserve proportions
+    fits: ['contain', 'contain', 'contain'],
   },
 ];

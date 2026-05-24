@@ -374,6 +374,29 @@
         });
     }
 
+
+    /* ── grid3 (3 equal columns, 1 row tall) ── */
+    else if (p.layout === 'grid3') {
+      ctx.save();
+      ctx.font = `italic ${Math.floor(ph * 0.06)}px Georgia,serif`;
+      ctx.fillStyle = p.accent; ctx.textAlign = 'left';
+      ctx.fillText(p.title, x + PAD, imgTop - 4);
+      ctx.font = `${Math.floor(ph * 0.037)}px Segoe UI,sans-serif`;
+      ctx.fillStyle = 'rgba(122,111,104,0.9)';
+      wrapText(p.desc, x + PAD, imgTop + 18, pw - PAD * 2, ph * 0.047);
+      ctx.restore();
+
+      const labels = p.labels || ['', '', ''];
+      const areaTop = imgTop + ph * 0.20;
+      const areaH   = ph - (areaTop - y) - PAD * 2;
+      const cellW   = (pw - PAD * 4) / 3;
+      [0, 1, 2].forEach(i => {
+        const ix = x + PAD + i * (cellW + PAD);
+        imgOrBox(p.imgs[i] || '', ix, areaTop, cellW, areaH, labels[i], fits[i] || 'contain');
+        smallLabel(labels[i], ix + cellW / 2, areaTop + areaH + 11);
+      });
+    }
+
     /* ── stack2 (two side-by-side) ── */
     else if (p.layout === 'stack2') {
       ctx.save();
